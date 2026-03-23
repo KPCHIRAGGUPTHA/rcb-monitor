@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: rcb-ticket-monitor
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python monitor.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: CHECK_INTERVAL
+        value: "60"
+      - key: KEYWORDS
+        value: "book now,buy tickets,available,add to cart,select seats"
